@@ -212,4 +212,20 @@ Lex → Routing → Fresh Flow
 
 ────────────────────────────────────────
 
-/ Hold for Callback
+## How it works
+1. Customer initiates chat via website chat widget
+2. Chat session is created in Amazon Connect Chat Contact Flow
+3. Generic welcome message is shown
+4. Chat is handed over to Amazon Lex bot for intent detection and slot capture
+5. Customer intent is identified and mapped to a service category
+6. Routing logic determines the appropriate queue using contact flow rules
+7. Hours of Operation is evaluated to check business availability
+8. If within business hours → customer is transferred to the relevant queue
+9. If outside business hours → out-of-hours message is played 
+10. Customer is connected to an available agent if in hours
+11. Chat continues in real time between customer and agent
+12. If customer becomes inactive or disconnects, disconnect flow is triggered
+13. Customer is allowed to return within 4 hours to resume the same conversation
+14. On return, system validates session and restores context
+15. Customer is routed to any available agent in the same queue
+16. If session exceeds 4 hours, a new chat session is initiated with fresh Lex routing
