@@ -1,0 +1,530 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "d3c854f9-3e5a-40ec-a769-4b318761e188",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": -544.8,
+      "y": -13.6
+    },
+    "ActionMetadata": {
+      "605e2908-45ab-4e46-b063-d3eca86b6f80": {
+        "position": {
+          "x": 2372.8,
+          "y": 140.8
+        }
+      },
+      "d3c854f9-3e5a-40ec-a769-4b318761e188": {
+        "position": {
+          "x": -448.8,
+          "y": 284.8
+        },
+        "parameters": {
+          "LambdaFunctionARN": {
+            "displayName": "CustomerDataFetching"
+          }
+        },
+        "dynamicMetadata": {}
+      },
+      "Greeting": {
+        "position": {
+          "x": -408.8,
+          "y": -32.8
+        },
+        "isFriendlyName": true,
+        "parameters": {
+          "SSML": {
+            "useDynamic": true
+          }
+        },
+        "useDynamic": true
+      },
+      "239e8624-fc60-435b-a701-da3fb9da724c": {
+        "position": {
+          "x": -96.8,
+          "y": -106.4
+        },
+        "parameters": {
+          "LexV2Bot": {
+            "AliasArn": {
+              "displayName": "Version1",
+              "useLexBotDropdown": true,
+              "lexV2BotName": "ITHelpDesk"
+            }
+          }
+        },
+        "useLexBotDropdown": true,
+        "lexV2BotName": "ITHelpDesk",
+        "lexV2BotAliasName": "Version1",
+        "conditionMetadata": [
+          {
+            "id": "0ba86b6e-cfdb-4ffb-ab3f-fc52fb5e8a6f",
+            "operator": {
+              "name": "Equals",
+              "value": "Equals",
+              "shortDisplay": "="
+            },
+            "value": "NewConnection"
+          },
+          {
+            "id": "5ebddb15-333d-47a9-9034-d64909fc9bb8",
+            "operator": {
+              "name": "Equals",
+              "value": "Equals",
+              "shortDisplay": "="
+            },
+            "value": "Billing"
+          },
+          {
+            "id": "c6a27c7a-3ed0-4a0c-92a1-468f7d747378",
+            "operator": {
+              "name": "Equals",
+              "value": "Equals",
+              "shortDisplay": "="
+            },
+            "value": "FallBackIntent"
+          }
+        ]
+      },
+      "Transfer to General": {
+        "position": {
+          "x": 264,
+          "y": 447.2
+        },
+        "isFriendlyName": true,
+        "parameters": {
+          "QueueId": {
+            "displayName": "General"
+          }
+        },
+        "queue": {
+          "text": "General"
+        }
+      },
+      "Transfer to Billing": {
+        "position": {
+          "x": 301.6,
+          "y": -100
+        },
+        "isFriendlyName": true,
+        "parameters": {
+          "QueueId": {
+            "displayName": "Billing"
+          }
+        },
+        "queue": {
+          "text": "Billing"
+        }
+      },
+      "Transfer to Sales": {
+        "position": {
+          "x": 264.8,
+          "y": 180.8
+        },
+        "isFriendlyName": true,
+        "parameters": {
+          "QueueId": {
+            "displayName": "Sales"
+          }
+        },
+        "queue": {
+          "text": "Sales"
+        }
+      },
+      "Transfer": {
+        "position": {
+          "x": 1195.2,
+          "y": 53.6
+        },
+        "isFriendlyName": true
+      },
+      "85354a2d-5344-428f-a5d3-c2ef1d2235c9": {
+        "position": {
+          "x": 949.6,
+          "y": -88.8
+        },
+        "parameters": {
+          "EventHooks": {
+            "CustomerQueue": {
+              "displayName": "ITHelpdeskcustomerqueueflow"
+            }
+          }
+        },
+        "contactFlow": {
+          "text": "ITHelpdeskcustomerqueueflow",
+          "id": "arn:aws:connect:us-east-1:780086238438:instance/c65bf91c-abec-418b-bc41-d8c798d79110/contact-flow/27e1bfee-d886-4c6a-aa5b-008fcf17cd2a"
+        },
+        "customerOrAgent": true
+      },
+      "3fc0698f-8914-4ce1-9ff2-a98ce65fa685": {
+        "position": {
+          "x": 593.6,
+          "y": -2.4
+        }
+      },
+      "40210d0f-819e-4ce5-aa28-f212857972bd": {
+        "position": {
+          "x": 1670.4,
+          "y": 366.4
+        }
+      },
+      "3c711c7f-8009-49cb-aa79-988c9fcf191b": {
+        "position": {
+          "x": 2171.2,
+          "y": 325.6
+        }
+      },
+      "822ef796-4ce0-4d26-9257-2efd73561f8a": {
+        "position": {
+          "x": 999.2,
+          "y": 364.8
+        },
+        "conditionMetadata": [
+          {
+            "id": "fb2df79a-b992-4e19-9b7d-536940d21b39",
+            "value": "1"
+          }
+        ]
+      },
+      "76c3aa02-9828-4d64-8f14-6aa57232d40f": {
+        "position": {
+          "x": 1380,
+          "y": 363.2
+        },
+        "parameters": {
+          "ContactFlowId": {
+            "displayName": "ITHelpdesk Task Flow"
+          },
+          "Attributes": {
+            "selectedqueue": {
+              "useDynamic": true
+            }
+          },
+          "DelaySeconds": {
+            "unit": 60
+          }
+        },
+        "ContactFlow": {
+          "text": "ITHelpdesk Task Flow"
+        },
+        "delayUnit": {
+          "value": "minute"
+        }
+      }
+    },
+    "Annotations": [],
+    "name": "Connecta Broadband ITHelpDesk",
+    "description": "",
+    "type": "contactFlow",
+    "status": "published",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {},
+      "Identifier": "605e2908-45ab-4e46-b063-d3eca86b6f80",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "LambdaFunctionARN": "arn:aws:lambda:us-east-1:780086238438:function:CustomerDataFetching",
+        "InvocationTimeLimitSeconds": "3",
+        "InvocationType": "SYNCHRONOUS",
+        "ResponseValidation": {
+          "ResponseType": "STRING_MAP"
+        }
+      },
+      "Identifier": "d3c854f9-3e5a-40ec-a769-4b318761e188",
+      "Type": "InvokeLambdaFunction",
+      "Transitions": {
+        "NextAction": "Greeting",
+        "Errors": [
+          {
+            "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "SkipWhenDTMFBufferEnabled": "false",
+        "SSML": "$.External.body"
+      },
+      "Identifier": "Greeting",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "239e8624-fc60-435b-a701-da3fb9da724c",
+        "Errors": [
+          {
+            "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "How can I help you today?",
+        "LexV2Bot": {
+          "AliasArn": "arn:aws:lex:us-east-1:780086238438:bot-alias/2HQY6LWUYH/I8KMV0RBJC"
+        }
+      },
+      "Identifier": "239e8624-fc60-435b-a701-da3fb9da724c",
+      "Type": "ConnectParticipantWithLexBot",
+      "Transitions": {
+        "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+        "Conditions": [
+          {
+            "NextAction": "Transfer to Sales",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "NewConnection"
+              ]
+            }
+          },
+          {
+            "NextAction": "Transfer to Billing",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "Billing"
+              ]
+            }
+          },
+          {
+            "NextAction": "Transfer to General",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "FallBackIntent"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "Transfer to General",
+            "ErrorType": "NoMatchingCondition"
+          },
+          {
+            "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "QueueId": "arn:aws:connect:us-east-1:780086238438:instance/c65bf91c-abec-418b-bc41-d8c798d79110/queue/dce7f15a-087e-4957-9a8c-7ecf7b428cb6"
+      },
+      "Identifier": "Transfer to General",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "3fc0698f-8914-4ce1-9ff2-a98ce65fa685",
+        "Errors": [
+          {
+            "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "QueueId": "arn:aws:connect:us-east-1:780086238438:instance/c65bf91c-abec-418b-bc41-d8c798d79110/queue/f4b81762-95a5-4984-9ccd-f00e7ee2201e"
+      },
+      "Identifier": "Transfer to Billing",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "3fc0698f-8914-4ce1-9ff2-a98ce65fa685",
+        "Errors": [
+          {
+            "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "QueueId": "arn:aws:connect:us-east-1:780086238438:instance/c65bf91c-abec-418b-bc41-d8c798d79110/queue/d0e340fb-a50f-4b8d-8d48-589b90d350f3"
+      },
+      "Identifier": "Transfer to Sales",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "3fc0698f-8914-4ce1-9ff2-a98ce65fa685",
+        "Errors": [
+          {
+            "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "Transfer",
+      "Type": "TransferContactToQueue",
+      "Transitions": {
+        "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+        "Errors": [
+          {
+            "NextAction": "605e2908-45ab-4e46-b063-d3eca86b6f80",
+            "ErrorType": "QueueAtCapacity"
+          },
+          {
+            "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "EventHooks": {
+          "CustomerQueue": "arn:aws:connect:us-east-1:780086238438:instance/c65bf91c-abec-418b-bc41-d8c798d79110/contact-flow/27e1bfee-d886-4c6a-aa5b-008fcf17cd2a"
+        }
+      },
+      "Identifier": "85354a2d-5344-428f-a5d3-c2ef1d2235c9",
+      "Type": "UpdateContactEventHooks",
+      "Transitions": {
+        "NextAction": "Transfer",
+        "Errors": [
+          {
+            "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "3fc0698f-8914-4ce1-9ff2-a98ce65fa685",
+      "Type": "CheckHoursOfOperation",
+      "Transitions": {
+        "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+        "Conditions": [
+          {
+            "NextAction": "85354a2d-5344-428f-a5d3-c2ef1d2235c9",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "True"
+              ]
+            }
+          },
+          {
+            "NextAction": "822ef796-4ce0-4d26-9257-2efd73561f8a",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "False"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "SkipWhenDTMFBufferEnabled": "false",
+        "Text": "Thankyou.We will call you back as per your request.Good Bye."
+      },
+      "Identifier": "40210d0f-819e-4ce5-aa28-f212857972bd",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "605e2908-45ab-4e46-b063-d3eca86b6f80",
+        "Errors": [
+          {
+            "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "SkipWhenDTMFBufferEnabled": "false",
+        "Text": "Sorry an error occured"
+      },
+      "Identifier": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "605e2908-45ab-4e46-b063-d3eca86b6f80",
+        "Errors": [
+          {
+            "NextAction": "605e2908-45ab-4e46-b063-d3eca86b6f80",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "StoreInput": "False",
+        "InputTimeLimitSeconds": "5",
+        "Text": "Thank you for calling. Our office is currently closed.\nplease call back later.Alternatively you can press one if you want us to call back."
+      },
+      "Identifier": "822ef796-4ce0-4d26-9257-2efd73561f8a",
+      "Type": "GetParticipantInput",
+      "Transitions": {
+        "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+        "Conditions": [
+          {
+            "NextAction": "76c3aa02-9828-4d64-8f14-6aa57232d40f",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "1"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+            "ErrorType": "InputTimeLimitExceeded"
+          },
+          {
+            "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+            "ErrorType": "NoMatchingCondition"
+          },
+          {
+            "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Name": "Customer call back request.",
+        "ContactFlowId": "arn:aws:connect:us-east-1:780086238438:instance/c65bf91c-abec-418b-bc41-d8c798d79110/contact-flow/52684f8e-4610-4d7a-8648-d6b55b0e2f66",
+        "Description": "Customer callback request on n umber $.CustomerEndpoint.Address",
+        "Attributes": {
+          "selectedqueue": "$.Queue.ARN"
+        },
+        "DelaySeconds": "120"
+      },
+      "Identifier": "76c3aa02-9828-4d64-8f14-6aa57232d40f",
+      "Type": "CreateTask",
+      "Transitions": {
+        "NextAction": "40210d0f-819e-4ce5-aa28-f212857972bd",
+        "Errors": [
+          {
+            "NextAction": "3c711c7f-8009-49cb-aa79-988c9fcf191b",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    }
+  ]
+}

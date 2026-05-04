@@ -1,0 +1,84 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "d2e682e0-9ee8-4043-96cc-2f762879ff58",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": 40,
+      "y": 40
+    },
+    "ActionMetadata": {
+      "27842402-50c2-4736-bf07-a3cf8b78c417": {
+        "position": {
+          "x": 1263.2,
+          "y": 186.4
+        }
+      },
+      "d2e682e0-9ee8-4043-96cc-2f762879ff58": {
+        "position": {
+          "x": 277.6,
+          "y": 69.6
+        },
+        "parameters": {
+          "QueueId": {
+            "useDynamic": true
+          }
+        },
+        "useDynamic": true
+      },
+      "42af9492-7cfc-48f0-a080-e245c76a55a0": {
+        "position": {
+          "x": 606.4,
+          "y": 78.4
+        }
+      }
+    },
+    "Annotations": [],
+    "name": "Connecta Broadband ITHelpdesk Task Flow",
+    "description": "",
+    "type": "contactFlow",
+    "status": "PUBLISHED",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {},
+      "Identifier": "27842402-50c2-4736-bf07-a3cf8b78c417",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "QueueId": "$.Attributes.selectedqueue"
+      },
+      "Identifier": "d2e682e0-9ee8-4043-96cc-2f762879ff58",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "42af9492-7cfc-48f0-a080-e245c76a55a0",
+        "Errors": [
+          {
+            "NextAction": "42af9492-7cfc-48f0-a080-e245c76a55a0",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "42af9492-7cfc-48f0-a080-e245c76a55a0",
+      "Type": "TransferContactToQueue",
+      "Transitions": {
+        "NextAction": "27842402-50c2-4736-bf07-a3cf8b78c417",
+        "Errors": [
+          {
+            "NextAction": "27842402-50c2-4736-bf07-a3cf8b78c417",
+            "ErrorType": "QueueAtCapacity"
+          },
+          {
+            "NextAction": "27842402-50c2-4736-bf07-a3cf8b78c417",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    }
+  ]
+}
