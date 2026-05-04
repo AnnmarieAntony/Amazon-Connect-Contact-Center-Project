@@ -1,0 +1,163 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "ff4a280f-e7a1-4376-bc15-c5bea99e6457",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": 40,
+      "y": 40
+    },
+    "ActionMetadata": {
+      "ff4a280f-e7a1-4376-bc15-c5bea99e6457": {
+        "position": {
+          "x": 175.2,
+          "y": 28.8
+        }
+      },
+      "d05ec6fb-b447-4895-9936-ef6f0521ffba": {
+        "position": {
+          "x": 468,
+          "y": -2.4
+        },
+        "parameters": {
+          "TimeLimitSeconds": {
+            "unit": 3600
+          }
+        },
+        "timeoutUnit": {
+          "display": "Hours",
+          "value": "hour"
+        }
+      },
+      "ee76332f-b543-4ea6-b546-c73dbbdf9a78": {
+        "position": {
+          "x": 1165.6,
+          "y": 322.4
+        }
+      },
+      "7c49fbab-061d-4e4a-a51b-0c4eec69286a": {
+        "position": {
+          "x": 970.4,
+          "y": -24
+        }
+      },
+      "97cba3cf-8f55-42f3-b2d0-1516535be8bf": {
+        "position": {
+          "x": 698.4,
+          "y": 0.8
+        },
+        "parameters": {
+          "QueueId": {
+            "displayName": "Customer Service"
+          }
+        },
+        "queue": {
+          "text": "Customer Service"
+        }
+      }
+    },
+    "Annotations": [],
+    "name": "Connecta Broadband ITHelpdesk chat disconnect flow",
+    "description": "",
+    "type": "contactFlow",
+    "status": "published",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {
+        "SkipWhenDTMFBufferEnabled": "false",
+        "Text": "Sorry, the chat got disconnected due to timeout. You can resume the chat by replying to this chat within the next 4 hours. Thankyou."
+      },
+      "Identifier": "ff4a280f-e7a1-4376-bc15-c5bea99e6457",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "d05ec6fb-b447-4895-9936-ef6f0521ffba",
+        "Errors": [
+          {
+            "NextAction": "ee76332f-b543-4ea6-b546-c73dbbdf9a78",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "TimeLimitSeconds": "14400",
+        "Events": [
+          "CustomerReturned"
+        ]
+      },
+      "Identifier": "d05ec6fb-b447-4895-9936-ef6f0521ffba",
+      "Type": "Wait",
+      "Transitions": {
+        "NextAction": "ee76332f-b543-4ea6-b546-c73dbbdf9a78",
+        "Conditions": [
+          {
+            "NextAction": "97cba3cf-8f55-42f3-b2d0-1516535be8bf",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "CustomerReturned"
+              ]
+            }
+          },
+          {
+            "NextAction": "ee76332f-b543-4ea6-b546-c73dbbdf9a78",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "WaitCompleted"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "ee76332f-b543-4ea6-b546-c73dbbdf9a78",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "ee76332f-b543-4ea6-b546-c73dbbdf9a78",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {},
+      "Identifier": "7c49fbab-061d-4e4a-a51b-0c4eec69286a",
+      "Type": "TransferContactToQueue",
+      "Transitions": {
+        "NextAction": "ee76332f-b543-4ea6-b546-c73dbbdf9a78",
+        "Errors": [
+          {
+            "NextAction": "ee76332f-b543-4ea6-b546-c73dbbdf9a78",
+            "ErrorType": "QueueAtCapacity"
+          },
+          {
+            "NextAction": "ee76332f-b543-4ea6-b546-c73dbbdf9a78",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "QueueId": "arn:aws:connect:us-east-1:780086238438:instance/c65bf91c-abec-418b-bc41-d8c798d79110/queue/dce7f15a-087e-4957-9a8c-7ecf7b428cb6"
+      },
+      "Identifier": "97cba3cf-8f55-42f3-b2d0-1516535be8bf",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "7c49fbab-061d-4e4a-a51b-0c4eec69286a",
+        "Errors": [
+          {
+            "NextAction": "ee76332f-b543-4ea6-b546-c73dbbdf9a78",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    }
+  ]
+}

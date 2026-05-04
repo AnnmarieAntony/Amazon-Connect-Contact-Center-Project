@@ -1,0 +1,405 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "1ad734f1-7e2e-49b9-8bd0-b32bbd99924e",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": 40,
+      "y": 40
+    },
+    "ActionMetadata": {
+      "1ad734f1-7e2e-49b9-8bd0-b32bbd99924e": {
+        "position": {
+          "x": -6.4,
+          "y": 248.8
+        },
+        "parameters": {
+          "EventHooks": {
+            "CustomerRemaining": {
+              "displayName": "ITHelpdesk chat disconnect flow"
+            }
+          }
+        },
+        "contactFlow": {
+          "text": "ITHelpdesk chat disconnect flow",
+          "id": "arn:aws:connect:us-east-1:780086238438:instance/c65bf91c-abec-418b-bc41-d8c798d79110/contact-flow/9f6d801d-30e4-4e6b-b33a-4110b3a1d443"
+        }
+      },
+      "378ae6cd-6767-4df8-8c02-8612c8e17b8b": {
+        "position": {
+          "x": 227.2,
+          "y": 311.2
+        }
+      },
+      "5f892be0-9918-4773-97b7-b3c64553d0ab": {
+        "position": {
+          "x": 264.8,
+          "y": 28.8
+        }
+      },
+      "23ce1c61-1799-4d7c-be47-dd251e1a66b8": {
+        "position": {
+          "x": 500,
+          "y": 28.8
+        },
+        "parameters": {
+          "LexV2Bot": {
+            "AliasArn": {
+              "displayName": "Version1",
+              "useLexBotDropdown": true,
+              "lexV2BotName": "ITHelpDesk"
+            }
+          }
+        },
+        "useLexBotDropdown": true,
+        "lexV2BotName": "ITHelpDesk",
+        "lexV2BotAliasName": "Version1",
+        "conditionMetadata": [
+          {
+            "id": "d9d1b9e1-16e1-40e0-a21b-4362507a89a4",
+            "operator": {
+              "name": "Equals",
+              "value": "Equals",
+              "shortDisplay": "="
+            },
+            "value": "Billing"
+          },
+          {
+            "id": "038177eb-8939-451f-b217-93638527a70b",
+            "operator": {
+              "name": "Equals",
+              "value": "Equals",
+              "shortDisplay": "="
+            },
+            "value": "NewConnection"
+          },
+          {
+            "id": "87f4e4f8-3477-49a8-b669-121844acf5ba",
+            "operator": {
+              "name": "Equals",
+              "value": "Equals",
+              "shortDisplay": "="
+            },
+            "value": "FallBackIntent"
+          }
+        ]
+      },
+      "1b2cd54c-be51-43c3-ac6a-f262782b96ba": {
+        "position": {
+          "x": 1188,
+          "y": 421.6
+        }
+      },
+      "63ee62fb-a8df-4eaa-ac96-15cb6f29cb3e": {
+        "position": {
+          "x": 1809.6,
+          "y": -80.8
+        }
+      },
+      "adfc95a9-e354-4d93-aa49-b5f4fb1580eb": {
+        "position": {
+          "x": 800,
+          "y": -72
+        },
+        "parameters": {
+          "QueueId": {
+            "displayName": "Billing"
+          }
+        },
+        "queue": {
+          "text": "Billing"
+        }
+      },
+      "1de28dc7-4424-44b6-80f5-fce05c7aea74": {
+        "position": {
+          "x": 785.6,
+          "y": 180
+        },
+        "parameters": {
+          "QueueId": {
+            "displayName": "Sales"
+          }
+        },
+        "queue": {
+          "text": "Sales"
+        }
+      },
+      "0d0fce8f-eb34-453e-b55a-dcb6f2853d24": {
+        "position": {
+          "x": 787.2,
+          "y": 397.6
+        },
+        "parameters": {
+          "QueueId": {
+            "displayName": "Customer Service"
+          }
+        },
+        "queue": {
+          "text": "Customer Service"
+        }
+      },
+      "1c49a1b0-69b4-46ba-bc0e-556a68855077": {
+        "position": {
+          "x": 1352.8,
+          "y": 192
+        }
+      },
+      "c7017992-5496-4d57-9e94-48a4c51a55ef": {
+        "position": {
+          "x": 1400.8,
+          "y": -117.6
+        }
+      },
+      "a5ca6443-3c14-42e3-9413-3bff37a2b031": {
+        "position": {
+          "x": 1681.6,
+          "y": 169.6
+        }
+      }
+    },
+    "Annotations": [],
+    "name": "Connecta Broadband ITHelpDesk Inbound chat flow",
+    "description": "",
+    "type": "contactFlow",
+    "status": "published",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {
+        "EventHooks": {
+          "CustomerRemaining": "arn:aws:connect:us-east-1:780086238438:instance/c65bf91c-abec-418b-bc41-d8c798d79110/contact-flow/9f6d801d-30e4-4e6b-b33a-4110b3a1d443"
+        }
+      },
+      "Identifier": "1ad734f1-7e2e-49b9-8bd0-b32bbd99924e",
+      "Type": "UpdateContactEventHooks",
+      "Transitions": {
+        "NextAction": "378ae6cd-6767-4df8-8c02-8612c8e17b8b",
+        "Errors": [
+          {
+            "NextAction": "1b2cd54c-be51-43c3-ac6a-f262782b96ba",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "FlowLoggingBehavior": "Enabled"
+      },
+      "Identifier": "378ae6cd-6767-4df8-8c02-8612c8e17b8b",
+      "Type": "UpdateFlowLoggingBehavior",
+      "Transitions": {
+        "NextAction": "5f892be0-9918-4773-97b7-b3c64553d0ab"
+      }
+    },
+    {
+      "Parameters": {
+        "SkipWhenDTMFBufferEnabled": "false",
+        "Text": "Thankyou for contacting our chat support. "
+      },
+      "Identifier": "5f892be0-9918-4773-97b7-b3c64553d0ab",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "23ce1c61-1799-4d7c-be47-dd251e1a66b8",
+        "Errors": [
+          {
+            "NextAction": "1b2cd54c-be51-43c3-ac6a-f262782b96ba",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "How can I help you today?",
+        "LexV2Bot": {
+          "AliasArn": "arn:aws:lex:us-east-1:780086238438:bot-alias/2HQY6LWUYH/I8KMV0RBJC"
+        }
+      },
+      "Identifier": "23ce1c61-1799-4d7c-be47-dd251e1a66b8",
+      "Type": "ConnectParticipantWithLexBot",
+      "Transitions": {
+        "NextAction": "1b2cd54c-be51-43c3-ac6a-f262782b96ba",
+        "Conditions": [
+          {
+            "NextAction": "adfc95a9-e354-4d93-aa49-b5f4fb1580eb",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "Billing"
+              ]
+            }
+          },
+          {
+            "NextAction": "1de28dc7-4424-44b6-80f5-fce05c7aea74",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "NewConnection"
+              ]
+            }
+          },
+          {
+            "NextAction": "0d0fce8f-eb34-453e-b55a-dcb6f2853d24",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "FallBackIntent"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "0d0fce8f-eb34-453e-b55a-dcb6f2853d24",
+            "ErrorType": "NoMatchingCondition"
+          },
+          {
+            "NextAction": "1b2cd54c-be51-43c3-ac6a-f262782b96ba",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "SkipWhenDTMFBufferEnabled": "false",
+        "Text": "Sorry! an error occured. Please contact us latyer."
+      },
+      "Identifier": "1b2cd54c-be51-43c3-ac6a-f262782b96ba",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "1c49a1b0-69b4-46ba-bc0e-556a68855077",
+        "Errors": [
+          {
+            "NextAction": "1c49a1b0-69b4-46ba-bc0e-556a68855077",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "63ee62fb-a8df-4eaa-ac96-15cb6f29cb3e",
+      "Type": "TransferContactToQueue",
+      "Transitions": {
+        "NextAction": "1b2cd54c-be51-43c3-ac6a-f262782b96ba",
+        "Errors": [
+          {
+            "NextAction": "1b2cd54c-be51-43c3-ac6a-f262782b96ba",
+            "ErrorType": "QueueAtCapacity"
+          },
+          {
+            "NextAction": "1b2cd54c-be51-43c3-ac6a-f262782b96ba",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "QueueId": "arn:aws:connect:us-east-1:780086238438:instance/c65bf91c-abec-418b-bc41-d8c798d79110/queue/f4b81762-95a5-4984-9ccd-f00e7ee2201e"
+      },
+      "Identifier": "adfc95a9-e354-4d93-aa49-b5f4fb1580eb",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "c7017992-5496-4d57-9e94-48a4c51a55ef",
+        "Errors": [
+          {
+            "NextAction": "1b2cd54c-be51-43c3-ac6a-f262782b96ba",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "QueueId": "arn:aws:connect:us-east-1:780086238438:instance/c65bf91c-abec-418b-bc41-d8c798d79110/queue/d0e340fb-a50f-4b8d-8d48-589b90d350f3"
+      },
+      "Identifier": "1de28dc7-4424-44b6-80f5-fce05c7aea74",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "c7017992-5496-4d57-9e94-48a4c51a55ef",
+        "Errors": [
+          {
+            "NextAction": "1b2cd54c-be51-43c3-ac6a-f262782b96ba",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "QueueId": "arn:aws:connect:us-east-1:780086238438:instance/c65bf91c-abec-418b-bc41-d8c798d79110/queue/dce7f15a-087e-4957-9a8c-7ecf7b428cb6"
+      },
+      "Identifier": "0d0fce8f-eb34-453e-b55a-dcb6f2853d24",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "c7017992-5496-4d57-9e94-48a4c51a55ef",
+        "Errors": [
+          {
+            "NextAction": "1b2cd54c-be51-43c3-ac6a-f262782b96ba",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "1c49a1b0-69b4-46ba-bc0e-556a68855077",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {},
+      "Identifier": "c7017992-5496-4d57-9e94-48a4c51a55ef",
+      "Type": "CheckHoursOfOperation",
+      "Transitions": {
+        "NextAction": "1c49a1b0-69b4-46ba-bc0e-556a68855077",
+        "Conditions": [
+          {
+            "NextAction": "63ee62fb-a8df-4eaa-ac96-15cb6f29cb3e",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "True"
+              ]
+            }
+          },
+          {
+            "NextAction": "a5ca6443-3c14-42e3-9413-3bff37a2b031",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "False"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "1c49a1b0-69b4-46ba-bc0e-556a68855077",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "SkipWhenDTMFBufferEnabled": "false",
+        "Text": "Our support team is currently unavailable as we are outside business hours. Please contact us during our business hours."
+      },
+      "Identifier": "a5ca6443-3c14-42e3-9413-3bff37a2b031",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "1c49a1b0-69b4-46ba-bc0e-556a68855077",
+        "Errors": [
+          {
+            "NextAction": "1c49a1b0-69b4-46ba-bc0e-556a68855077",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    }
+  ]
+}
