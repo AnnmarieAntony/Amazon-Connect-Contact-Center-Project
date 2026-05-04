@@ -1,9 +1,14 @@
-# IVR Contact Center Solution using Amazon Connect, Lambda & Lex
+# Omnichannel Contact Center (Voice + Chat) using Amazon Connect
 
 ## Overview
-Designed and implemented an IVR-based contact center solution for a broadband company using Amazon Connect.
+Designed and implemented an omnichannel contact center solution for a broadband company using Amazon Connect.
 
-The solution delivers a personalized and intelligent customer experience by integrating AWS Lambda, Amazon DynamoDB, and Amazon Lex.
+The solution delivers a personalized and intelligent customer experience by integrating Amazon connect, AWS Lambda, Amazon DynamoDB, and Amazon Lex.
+
+## Omnichannel Architecture
+
+This solution supports both voice (IVR) and chat channels using Amazon Connect. 
+Both channels share backend services (Lambda, DynamoDB, Lex) to provide a unified customer experience.
 
 ## Key Features:
 
@@ -30,6 +35,58 @@ Provides callback option when agents are busy. Customers are automatically calle
 -IAM (Permissions and roles)
 
 ## Architecture
+Omnichannel :
+
+                    ┌──────────────────────────────┐
+                    │        Customer Channels     │
+                    └──────────────────────────────┘
+                         │                  │
+                         │                  │
+                  📞 Voice (IVR)        💬 Chat (Web/App)
+                         │                  │
+                         ▼                  ▼
+        ┌────────────────────────┐   ┌────────────────────────┐
+        │ Amazon Connect         │   │ Amazon Connect         │
+        │ Voice Contact Flow     │   │ Chat Flow              │
+        └─────────────┬──────────┘   └─────────────┬──────────┘
+                      │                            │
+                      └──────────────┬─────────────┘
+                                     ▼
+                        ┌────────────────────────┐
+                        │ AWS Lambda             │
+                        │ (Business Logic)       │
+                        └─────────────┬──────────┘
+                                      │
+                                      ▼
+                        ┌────────────────────────┐
+                        │ Amazon DynamoDB        │
+                        │ (Customer Data)        │
+                        └─────────────┬──────────┘
+                                      │
+                                      ▼
+                        ┌────────────────────────┐
+                        │ Amazon Lex             │
+                        │ (NLU / Intents)        │
+                        └─────────────┬──────────┘
+                                      │
+                                      ▼
+                        ┌────────────────────────┐
+                        │ Routing Logic          │
+                        │ (Hours / Queue Select) │
+                        └─────────────┬──────────┘
+                                      │
+                                      ▼
+                        ┌────────────────────────┐
+                        │ Agent Queue            │
+                        │ (Voice + Chat)         │
+                        └─────────────┬──────────┘
+                                      │
+                                      ▼
+                              👩‍💻 Agent
+
+
+  IVR Flow:
+  
 
   Customer Call
       ↓
@@ -84,3 +141,75 @@ Create Task (Callback Request)
 8. Queue identified and check hours of operation
 9. call back options based on hours of operation
 10. Transfer to agent if in hours and connected to agent
+
+
+Inbound Chat flow:
+
+
+    Customer Starts Chat
+        ↓
+Amazon Connect Chat Entry Flow
+        ↓
+Welcome / Greeting Message
+        ↓
+Amazon Lex Bot (Intent Detection)
+        ↓
+Intent Identified
+        ↓
+Routing Decision (Lambda / Flow Logic)
+        ↓
+Route to Appropriate Queue
+        ↓
+                                            ┌───────────────────────────────┐
+         -----------------                  │      OUT OF BUSINESS HOURS    │
+                                            └───────────────────────────────┘
+                                                          ↓
+                                                  Out-of-Hours Message OR
+                                                  Callback Option OR
+           ↓                                      Task Creation (Lambda)
+                                                          ↓
+                                                      End Chat 
+
+  ┌───────────────────────────────┐
+│     IN BUSINESS HOURS    │
+└───────────────────────────────┘
+Agent Assigned
+        ↓
+Chat in Progress
+        ↓
+Customer / Agent Disconnect Event
+        ↓
+
+ chat disconnect flow
+        ↓
+
+────────────────────────────────────────
+        🔁 DISCONNECT RECOVERY LOGIC
+────────────────────────────────────────
+        ↓
+Customer Returns to Chat
+        in ≤ 4 Hours?
+        ↓
+      ┌───────────────┐
+      │ YES            │
+      └───────────────┘
+        ↓
+Restore Chat Context
+        ↓
+Route to Any Available Agent
+        ↓
+Continue Previous Conversation
+        ↓
+Chat Resumed Successfully
+
+      ┌───────────────┐
+      │ NO (>4 hours)  │
+      └───────────────┘
+        ↓
+New Chat Session Starts
+        ↓
+Lex → Routing → Fresh Flow
+
+────────────────────────────────────────
+
+/ Hold for Callback
